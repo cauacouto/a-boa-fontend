@@ -33,6 +33,8 @@ export function useEventos(): UseEventosReturn {
     }
   }, []);
 
+
+
   useEffect(() => {
     fetchEventos();
   }, [fetchEventos]);
@@ -50,6 +52,8 @@ export function useEventos(): UseEventosReturn {
       setSaving(false);
     }
   };
+
+
 
   const atualizarEvento = async (id: number, dto: EventoRequestDto): Promise<boolean> => {
     setSaving(true);
