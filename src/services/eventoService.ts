@@ -2,7 +2,7 @@ import { API_BASE } from '../constants';
 import { Evento, EventoRequestDto, EventoResponseDto } from '../types';
 
 function authHeaders(): Record<string, string> {
-  const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
   return {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${token}`,

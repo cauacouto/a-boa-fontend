@@ -167,7 +167,7 @@ export function RegisterPage() {
                 : 'none',
             }}
           >
-            Crie sua conta e descubra os melhores eventos
+            Crie sua conta e descubra os melhores roles que estão acontecendo 
           </p>
         </div>
 

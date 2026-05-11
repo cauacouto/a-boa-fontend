@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { UserMenu } from './UserMenu';
 
 interface HeroProps {
   onAddClick: () => void;
@@ -13,14 +14,18 @@ export function Hero({ onAddClick, onRefresh }: HeroProps) {
     return () => clearTimeout(timer);
   }, []);
 
-  const letters = ['✦ ','A', ' ', 'B', 'O', 'A','✦ '];
+  const letters = ['✦ ', 'A', ' ', 'B', 'O', 'A', ' ✦'];
 
   return (
     <div
       className="relative px-6 pt-16 pb-20 text-center overflow-hidden"
-   style={{ background: 'linear-gradient(135deg, #080010 0%, #0a0a0a 50%, #080010 100%)' }}
-    
+      style={{ background: 'linear-gradient(135deg, #080010 0%, #0a0a0a 50%, #080010 100%)' }}
     >
+      {/* UserMenu no canto superior direito */}
+      <div className="absolute top-5 right-6 z-20">
+        <UserMenu />
+      </div>
+
       {/* Grid futurista de fundo */}
       <div
         className="absolute inset-0 opacity-10"
@@ -39,7 +44,7 @@ export function Hero({ onAddClick, onRefresh }: HeroProps) {
         style={{ background: '#E040A0', transform: 'translate(-50%, -50%)' }}
       />
       <div
-       className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full opacity-[0.08] blur-3xl"
+        className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full opacity-[0.08] blur-3xl"
         style={{ background: '#7B2FBE', transform: 'translate(50%, 50%)' }}
       />
 
@@ -87,23 +92,24 @@ export function Hero({ onAddClick, onRefresh }: HeroProps) {
           }}
         />
 
-      <p
-  className="text-base font-dm max-w-md mx-auto mb-10 leading-relaxed transition-all duration-700"
-  style={{
-    opacity: visible ? 1 : 0,
-    transform: visible ? 'translateY(0)' : 'translateY(20px)',
-    transitionDelay: '400ms',
-    background: 'linear-gradient(90deg, #aaa, #E040A0, #FF6B35, #7B2FBE, #aaa)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text',
-    backgroundSize: '200% auto',
-    animation: 'shimmer 4s linear infinite',
-  }}
->
-  Descobre, compartilha e registra os melhores rolês que estão agitando o Rio —
-  do baile ao after!
-</p>
+        <p
+          className="text-base font-dm max-w-md mx-auto mb-10 leading-relaxed transition-all duration-700"
+          style={{
+            opacity: visible ? 1 : 0,
+            transform: visible ? 'translateY(0)' : 'translateY(20px)',
+            transitionDelay: '400ms',
+            background: 'linear-gradient(90deg, #aaa, #E040A0, #FF6B35, #7B2FBE, #aaa)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            backgroundSize: '200% auto',
+            animation: 'shimmer 4s linear infinite',
+          }}
+        >
+          Descobre, compartilha e registra os melhores rolês que estão agitando o Rio —
+          do baile ao after!
+        </p>
+
         <div
           className="flex gap-3 justify-center flex-wrap transition-all duration-700"
           style={{

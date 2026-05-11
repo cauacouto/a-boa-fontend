@@ -7,7 +7,8 @@ import { RegisterPage } from './pages/RegisterPage';
 import './index.css';
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
+  console.log('token:', token); // ← debug
   if (!token) {
     return <Navigate to="/login" replace />;
   }

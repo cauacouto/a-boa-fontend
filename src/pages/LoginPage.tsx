@@ -22,30 +22,28 @@ export function LoginPage() {
     setForm((f) => ({ ...f, [k]: v }));
 
   const handleSubmit = async () => {
-    setLoading(true);
-    setError('');
-
-    try {
-      const res = await fetch('http://localhost:8080/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-
-      if (!res.ok) throw new Error('Email ou senha inválidos');
-
-      const data = await res.json();
-
-      localStorage.setItem('token', data.token);
-
-      navigate('/');
-    } catch (e: any) {
-      setError(e.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  setLoading(true);
+  setError('');
+  try {
+    const res = await fetch('http://localhost:8080/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    });
+    if (!res.ok) throw new Error('Email ou senha inválidos');
+    const data = await res.json();
+    console.log('data recebido:', data); // ← vê o que vem do backend
+    sessionStorage.setItem('token', data.token);
+    sessionStorage.setItem('userEmail', form.email);
+    console.log('token salvo:', sessionStorage.getItem('token')); // ← confirma se salvou
+    navigate('/');
+  } catch (e: any) {
+    setError(e.message);
+  } finally {
+    setLoading(false);
+  }
+};
+ 
   const inputStyle = {
     background: 'rgba(255,255,255,0.04)',
     border: '1.5px solid rgba(224,64,160,0.2)',
